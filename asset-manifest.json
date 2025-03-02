@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gabrielaraducan1606/proiect-individual-front-end/static/css/main.7acaea2f.css",
+    "main.js": "/gabrielaraducan1606/proiect-individual-front-end/static/js/main.07d3183d.js",
+    "index.html": "/gabrielaraducan1606/proiect-individual-front-end/index.html",
+    "main.7acaea2f.css.map": "/gabrielaraducan1606/proiect-individual-front-end/static/css/main.7acaea2f.css.map",
+    "main.07d3183d.js.map": "/gabrielaraducan1606/proiect-individual-front-end/static/js/main.07d3183d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.07d3183d.js"
+  ]
+}
