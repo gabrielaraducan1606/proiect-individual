@@ -1,0 +1,9 @@
+.diaryContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.leftContent {
+    flex-grow: 1;
+}

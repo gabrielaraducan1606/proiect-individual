@@ -1,0 +1,12 @@
+.logoContainer {
+    position: absolute;
+top: 40px;
+left: 16px;
+}
+
+.logo {
+    width: 167;
+    height: 66;
+    object-fit: contain;
+}
+

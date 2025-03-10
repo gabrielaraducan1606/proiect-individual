@@ -1,0 +1,178 @@
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Bara Verticală */
+.verticalBar {
+    position: absolute;
+    height: 24px;
+    width: 2px;
+    background-color: #E0E0E0;
+    margin: 0 16px;
+    top: 85px;
+    left: 190px;
+    border-width: 2px;
+}
+
+/* Meniu Login & Register */
+.nav {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: 90px;
+    left: 230px;
+}
+
+.navLink {
+    color: #9B9FAA;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+}
+
+.navLink:hover {
+    color:#FC842D;
+}
+
+.navLink:focus{
+    color: #FC842D;
+}
+
+.navLink:active {
+    color: #FC842D;
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* ✅ Mutăm conținutul mai jos */
+    min-height: 100vh; /* ✅ Umple întreaga înălțime a ecranului */
+    padding-top: 150px; /* ✅ Adaugă spațiu sus pentru a coborî login-ul */
+    padding-left: 26px;
+}
+
+.titleRegister{
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+    margin-bottom: 55px;
+    text-align: left;
+    color: #FC842D;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* ✅ Spațiere între câmpuri */
+    width: 100%;
+    max-width: 320px;
+}
+
+/* ✅ Input-urile */
+form input {
+    width: 240px;
+    padding: 20px;
+    padding-left: 0;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 550;
+    background-color: transparent;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+/* ✅ Efect la focus */
+form input:focus {
+    border-bottom: 2px solid #FC842D;
+}
+
+/* ✅ Stilizare placeholder */
+form input::placeholder {
+    color: #9B9FAA; /* ✅ Culoarea dorită */
+    opacity: 1; /* ✅ Asigură că este vizibil pe toate browserele */
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+}
+
+/* ✅ Compatibilitate cu diferite browsere */
+form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #9B9FAA;
+}
+
+form input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #9B9FAA;
+}
+
+.buttonContainer{
+    display: flex;
+    gap: 32px;
+}
+/* ✅ Butonul */
+form button {
+    background-color: #FC842D;
+    color: white;
+    padding: 13px 50px;
+    border: none;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(252, 132, 45, 0.5);
+    width: 181px;
+    margin-top: 60px;
+}
+
+form button:hover {
+    background-color: white;
+    color: #FC842D;
+    border: 2px solid #FC842D;
+}
+
+.loginButton{
+    background-color: white;
+    color: #FC842D;
+    border: 1px solid #FC842D;
+    padding: 13px 50px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    width: 181px;
+    margin-top: 60px;
+}
+
+
+/* ✅ Efect la hover pentru butonul Register */
+.loginButton:hover {
+    background-color: #FC842D;
+    color: white;
+}
+
+/* ✅ Animație subtilă */
+.button, .loginButton {
+    transform: translateY(0);
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* ✅ Efect la click (butonul se apasă vizual) */
+.button:active, .loginButton:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 5px rgba(252, 132, 45, 0.5);
+}

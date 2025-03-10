@@ -1,0 +1,180 @@
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #212121;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    position: absolute;
+    left: 40px;
+    top: 200px;
+}
+
+/* Stilizare Formular */
+.formContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    left: 16px;
+    top: 350px;
+    color: #9B9FAA;
+}
+
+/* Input-uri */
+.inputField {
+    width: 240px;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 550;
+    background-color: transparent;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+.inputField:focus {
+    border-bottom: 2px solid #FC842D;
+}
+
+/* Blood Type */
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 32px;
+}
+
+/* Blood Type */
+/* ✅ Container pentru grupa sanguină */
+.bloodTypeContainer {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: absolute;
+    top: 100px;
+}
+
+/* ✅ Etichetă Blood Type */
+.bloodTypeLabel {
+    width: 240px;
+    font-weight: 550;
+    font-size: 14px;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 8px;
+    letter-spacing: 4%;
+}
+
+/* ✅ Lista grupelor de sânge */
+.bloodTypeOptions {
+    display: flex;
+    gap: 20px; /* Spațiere între opțiuni */
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* ✅ Opțiune individuală (radio + cifră) */
+.bloodTypeOptions li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+/* ✅ Personalizăm radio button-ul */
+.bloodTypeOptions input[type="radio"] {
+    appearance: none; /* Ascunde stilul default */
+    width: 18px; /* Dimensiune fixă și egală */
+    height: 18px;
+    border: 2px solid #9B9FAA;
+    border-radius: 50%; /* ✅ CERC PERFECT */
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* ✅ Efect de selectare - întreaga biluță devine portocalie */
+.bloodTypeOptions input[type="radio"]:checked {
+    border-color: #FC842D;
+    background-color: #FC842D;
+}
+
+/* ✅ Efectul punctului alb din interior când este selectat */
+.bloodTypeOptions input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+/* ✅ Afișăm punctul alb doar când butonul este selectat */
+.bloodTypeOptions input[type="radio"]:checked::before {
+    opacity: 1;
+}
+
+/* ✅ Când radio este selectat, și cifra devine portocalie */
+.bloodTypeOptions input[type="radio"]:checked + span {
+    color: #FC842D;
+}
+
+/* ✅ Stil pentru cifră */
+.bloodTypeOptions span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #9B9FAA; /* Culoarea implicită */
+    transition: color 0.3s ease-in-out;
+}
+
+/* ✅ La hover, biluța și textul devin portocalii */
+.bloodTypeOptions li:hover input[type="radio"] {
+    border-color: #FC842D;
+}
+
+.bloodTypeOptions li:hover span {
+    color: #FC842D;
+}
+
+
+/* Butonul */
+.submitButton {
+    position: absolute;
+    bottom: -70px;
+    right: -10px;
+    background-color: #FC842D;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(252, 132, 45, 0.5);
+}
+
+.submitButton:hover {
+    background-color: white;
+    color: #FC842D;
+    border: 1px solid #FC842D;
+}

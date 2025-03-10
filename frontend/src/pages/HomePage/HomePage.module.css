@@ -1,0 +1,483 @@
+/* Stilizare Header */
+.homeContainer {
+    font-family: Verdana, Geneva, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+    padding-top: 293px; 
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 24px;
+}
+
+/* Logo */
+.logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Bara Verticală */
+.verticalBar {
+    position: absolute;
+    height: 24px;
+    width: 2px;
+    background-color: #E0E0E0;
+    margin: 0 16px;
+    top: 85px;
+    left: 190px;
+    border-width: 2px;
+}
+
+/* Meniu Login & Register */
+.nav {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    top: 90px;
+    left: 230px;
+}
+
+.navLink {
+    color: #9B9FAA;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-transform: uppercase;
+}
+
+.navLink:hover {
+    color:#FC842D;
+}
+
+.navLink:focus{
+    color: #FC842D;
+}
+
+.navLink:active {
+    color: #FC842D;
+}
+
+/* Titlu - Aliniere corectă */
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    color: #212121;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    position: absolute;
+    left: 40px;
+    top: 200px;
+}
+
+/* Stilizare Formular */
+.formContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    left: 16px;
+    top: 350px;
+    color: #9B9FAA;
+}
+
+/* Input-uri */
+.inputField {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 550;
+    background-color: transparent;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+.inputField:focus {
+    border-bottom: 2px solid #FC842D;
+}
+
+/* Blood Type */
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 32px;
+}
+
+/* Blood Type */
+/* ✅ Container pentru grupa sanguină */
+.bloodTypeContainer {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: absolute;
+    top: 100px;
+}
+
+/* ✅ Etichetă Blood Type */
+.bloodTypeLabel {
+    width: 220px;
+    font-weight: 550;
+    font-size: 14px;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 8px;
+    letter-spacing: 4%;
+}
+
+/* ✅ Lista grupelor de sânge */
+/* ✅ Container pentru grupa sanguină */
+.bloodTypeContainer {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: absolute;
+    top: 100px;
+}
+
+/* ✅ Etichetă Blood Type */
+.bloodTypeLabel {
+    width: 220px;
+    font-weight: 550;
+    font-size: 14px;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 8px;
+    letter-spacing: 4%;
+}
+
+/* ✅ Lista grupelor de sânge */
+.bloodTypeOptions {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* ✅ Opțiune individuală (radio + cifră) */
+.bloodTypeOptions li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+/* ✅ Personalizăm radio button-ul */
+.bloodTypeOptions input[type="radio"] {
+    appearance: none; /* Ascunde stilul default */
+    width: 20px; /* Dimensiune fixă și egală */
+    height: 5px;
+    border: 2px solid #9B9FAA;
+    border-radius: 50%; /* ✅ Face butonul complet rotund */
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* ✅ Efect de selectare */
+.bloodTypeOptions input[type="radio"]:checked {
+    border-color: #FC842D; 
+    background-color: #FC842D;
+}
+
+/* ✅ Adăugăm un punct alb în mijloc când este selectat */
+.bloodTypeOptions input[type="radio"]::before {
+    content: "";
+    width: 8px; /* Punct central */
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+/* ✅ Afișăm punctul doar când butonul este selectat */
+.bloodTypeOptions input[type="radio"]:checked::before {
+    opacity: 1;
+}
+
+/* ✅ Când radio este selectat, cifra devine portocalie */
+.bloodTypeOptions input[type="radio"]:checked + span {
+    color: #FC842D;
+}
+
+/* ✅ Stil pentru cifră */
+.bloodTypeOptions span {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+
+/* Butonul */
+.submitButton {
+    position: absolute;
+    bottom: -70px;
+    right: -10px;
+    background-color: #FC842D;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(252, 132, 45, 0.5);
+}
+
+.submitButton:hover {
+    background-color: white;
+    color: #FC842D;
+    border: 1px solid #FC842D;
+}
+
+/* ✅ Modal Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ✅ Modal Content */
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ Numărul de calorii */
+.caloriesNumber {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FC842D;
+    margin: 10px 0;
+}
+
+/* ✅ Linie separator */
+.modalDivider {
+    width: 100%;
+    height: 2px;
+    background: #9B9FAA;
+    border: none;
+    margin: 10px 0;
+}
+
+/* ✅ Lista produselor interzise */
+.forbiddenList {
+    list-style: none;
+    padding: 0;
+}
+
+.forbiddenList li {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* ✅ Buton de închidere (X) */
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s ease-in-out;
+}
+
+.closeButton:hover {
+    color: #FC842D;
+}
+
+/* ✅ Modal Overlay */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ✅ Modal Content */
+.modalContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    height: 500px; 
+}
+
+.modalTitle{
+    color: #212121;
+    font-family: Verdana;
+font-weight: 700;
+font-size: 26px;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: center;
+
+}
+
+/* ✅ Numărul de calorii */
+.caloriesNumber {
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-align: center;
+    color: #264061;
+    margin: 10px 0;
+}
+
+/* ✅ Linie separator centrată */
+.modalDivider {
+    width: 330px;
+    height: 1px;
+    background: #E0E0E0;
+    border: none;
+    margin: 20px auto;  
+    display: block;
+}
+
+.title2 {
+    color: #212121;
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    text-align: left;
+    padding-left: 40px;
+}
+
+/* ✅ Lista numerotată cu scroll */
+.forbiddenList {
+    font-family: Verdana;
+    padding: 10px;
+    text-align: left;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 200px; /* ✅ Limităm înălțimea */
+    overflow-y: auto;  /* ✅ Adăugăm scroll vertical */
+    border: 1px solid #E0E0E0; /* ✅ Linie subtilă pentru delimitare */
+    border-radius: 5px;
+    background: #FAFAFA; /* ✅ Fundal discret */
+}
+
+/* ✅ Stilizare pentru fiecare element al listei */
+.forbiddenList li {
+    font-size: 14px;
+    color: #9B9FAA;
+    margin: 5px 0;
+    font-weight: 500;
+    padding: 5px;
+}
+
+/* ✅ Butonul de Start Losing Weight în modal */
+.startButtonModal {
+    position: relative; /* ✅ Eliminăm `absolute` pentru a nu ieși din container */
+    display: block; /* ✅ Asigurăm că ocupă întreaga linie */
+    margin: 20px auto 0; /* ✅ Centrare automată */
+    background-color: #FC842D;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0px 5px 10px rgba(252, 132, 45, 0.5);
+}
+
+/* ✅ Efect la hover */
+.startButtonModal:hover {
+    background-color: white;
+    color: #FC842D;
+    border: 2px solid #FC842D;
+}
+
+
+/* ✅ Mobile */
+@media (max-width: 768px) {
+    .homeContainer {
+        padding-top: 120px;
+    }
+
+    .title {
+        font-size: 18px;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 200px;
+    }
+
+    .formContainer {
+        grid-template-columns: 1fr;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 250px;
+        width: 90%;
+    }
+
+    .submitButton {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 20px;
+    }
+}

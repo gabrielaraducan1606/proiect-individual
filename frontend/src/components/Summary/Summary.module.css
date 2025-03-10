@@ -1,0 +1,56 @@
+/* ✅ Container pentru Summary */
+.summaryContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 517px; /* ✅ Lățimea containerului */
+    height: 100vh; /* ✅ Înălțimea pe toată pagina */
+    background: #F0F1F3;
+    padding: 20px;
+    box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ✅ Titlul "Summary for today" */
+.summaryTitle {
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    color: #212121;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* ✅ Listă pentru informații */
+/* ✅ Listă pentru informații */
+.summaryList {
+    list-style: none;
+    padding: 0;
+    width: 288px;
+    text-align: left;
+}
+
+/* ✅ Fiecare element din listă */
+.summaryList li {
+    font-family: Verdana;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+    color: #9B9FAA;
+    padding: 10px 0;
+    display: flex;  /* ✅ Folosim Flexbox */
+    justify-content: space-between;  /* ✅ Spațiere între etichetă și valoare */
+    align-items: center; /* ✅ Aliniere verticală */
+}
+
+/* ✅ Stil pentru eticheta (Left, Consumed, etc.) */
+.summaryList li span {
+    font-weight: bold;
+    color: #9B9FAA;
+}
