@@ -1,9 +1,58 @@
+/* ✅ Container principal */
 .diaryContainer {
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute; /* ❗️Împingem totul la stânga */
+    left: 0; /* ❗️Fixăm la marginea stângă */
+    top: 160px; /* ❗️Păstrăm poziția corectă în jos */
+    width: 100%;
 }
 
-.leftContent {
-    flex-grow: 1;
+/* ✅ Calendar + Formular */
+.formContainer {
+    display: flex;
+    flex-direction: column; /* ❗️ RightColumn este sub LeftColumn */
+    gap: 20px;
+    width: 100%;
+    color: #9B9FAA;
+    padding-left: 16px; /* ❗️ Opțional, dacă vrei o mică margine */
+}
+
+/* ✅ Calendar */
+.calendarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ✅ Input-uri */
+.inputField {
+    width: 24px;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    outline: none;
+    font-size: 14px;
+    font-weight: 550;
+    background-color: transparent;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+/* ✅ RightColumn sub LeftColumn */
+.leftColumn{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 40px;
+}
+
+/* ✅ Lista produselor */
+.productsList {
+    list-style: none;
+    width: 100%;
+    background: #F0F1F3;
+    padding: 20px;
+    border-radius: 10px;
 }

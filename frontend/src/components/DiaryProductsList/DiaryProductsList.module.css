@@ -1,18 +1,97 @@
-.productList {
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+/* ✅ Containerul listei */
+.productsListContainer {
+    width: 700px; /* ✅ Lățime fixă */
+    height: 200px;
+    margin-top: 60px;
+    margin-left: 16px;
+    max-height: 410px; /* Înălțime maximă pentru scroll */
+    overflow-y: auto; /* Scroll vertical */
+    padding: 10px;
+    background: white;
+    position: relative;
 }
 
-ul {
+/* ✅ Custom scrollbar */
+.productsListContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+.productsListContainer::-webkit-scrollbar-thumb {
+    background-color: #264061;
+    border-radius: 4px;
+}
+
+.productsListContainer::-webkit-scrollbar-track {
+    background: #E0E0E0;
+}
+
+
+/* ✅ Lista */
+.productsList {
     list-style: none;
     padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-li {
+/* ✅ Element individual din listă */
+.productsList li {
     display: flex;
-    justify-content: space-between;
-    padding: 8px;
-    border-bottom: 1px solid #eee;
+    align-items: center;
+    justify-content: space-between; /* ✅ Așează elementele pe aceeași linie */
+    padding: 10px 0;
+    gap: 40px;
 }
+
+/* ✅ Coloana 1: Aliment */
+.productName {
+    flex: 3; /* ✅ Mai mult spațiu pentru numele produsului */
+    font-family: Verdana;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+color: #212121;
+    text-align: left;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0; /* ✅ Linie sub numele produsului */
+}
+
+/* ✅ Coloana 2: Cantitate */
+.productWeight {
+    flex: 1; /* ✅ Ocupă mai puțin spațiu */
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    text-align: right;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0; /* ✅ Linie sub cantitate */
+}
+
+/* ✅ Coloana 3: Calorii */
+.productCalories {
+    flex: 1; /* ✅ Ocupă mai puțin spațiu */
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+    text-align: right;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0; /* ✅ Linie sub calorii */
+}
+
+/* ✅ Butonul de ștergere (X) */
+.deleteButton {
+    background: none;
+    border: none;
+    color: #9B9FAA;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    align-self: center;
+}
+
+.deleteButton:hover {
+    color: #d95c1a;
+}
+

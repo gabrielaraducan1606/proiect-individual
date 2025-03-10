@@ -1,43 +1,77 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addConsumedCalories } from "../../redux/caloriesSlice";
-import productsData from "../../data/products.json";
+import React, { useState, useEffect } from "react";
+import productsData from "../../data/products.json"; // ✅ Importăm lista de produse
 import styles from "./DiaryAddProductForm.module.css";
 
-const DiaryAddProductForm = ({ selectedDate }) => {
-    const dispatch = useDispatch();
+const DiaryAddProductForm = ({ selectedDate, onAddFood }) => {
     const [product, setProduct] = useState("");
     const [weight, setWeight] = useState("");
-    const [error, setError] = useState("");
+    const [calories, setCalories] = useState(0);
+    const [filteredProducts, setFilteredProducts] = useState([]);
 
-    const handleAddFood = () => {
-        if (!product || !weight) {
-            setError("Please enter a product and weight.");
-            return;
+    useEffect(() => {
+        // ✅ Filtrăm produsele pe baza textului introdus
+        if (product.length > 0) {
+            const filtered = productsData.filter((p) =>
+                p.title.toLowerCase().includes(product.toLowerCase())
+            );
+            setFilteredProducts(filtered);
+        } else {
+            setFilteredProducts([]);
         }
-        setError("");
+    }, [product]);
 
-        const foundProduct = productsData.find((p) => p.title.toLowerCase() === product.toLowerCase());
+    const handleSelectProduct = (selectedProduct) => {
+        setProduct(selectedProduct.title);
+        setCalories(selectedProduct.calories);
+        setFilteredProducts([]); // ✅ Ascundem sugestiile după selectare
+    };
 
-        if (!foundProduct) {
-            setError("Product not found in database.");
-            return;
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!product || !weight) return;
 
-        const calories = (foundProduct.calories / 100) * weight;
-        dispatch(addConsumedCalories(calories));
+        const totalCalories = (weight / 100) * calories; // ✅ Calculăm caloriile corect
 
+        onAddFood({ name: product, weight, calories: totalCalories });
         setProduct("");
         setWeight("");
+        setCalories(0);
     };
 
     return (
-        <div className={styles.productForm}>
-            <h3>Add Product for {selectedDate.toLocaleDateString()}</h3>
-            {error && <p className={styles.errorText}>{error}</p>}
-            <input type="text" placeholder="Product Name" value={product} onChange={(e) => setProduct(e.target.value)} />
-            <input type="number" placeholder="Weight (g)" value={weight} onChange={(e) => setWeight(e.target.value)} />
-            <button onClick={handleAddFood}>+</button>
+        <div className={styles.formContainer}>
+            <form onSubmit={handleSubmit}>
+                <div className={styles.inputGroup}>
+                    <input
+                        type="text"
+                        placeholder="Enter food name"
+                        value={product}
+                        onChange={(e) => setProduct(e.target.value)}
+                        className={styles.inputField}
+                    />
+                    {/* ✅ Lista de sugestii */}
+                    {filteredProducts.length > 0 && (
+                        <ul className={styles.suggestions}>
+                            {filteredProducts.slice(0, 5).map((p) => (
+                                <li key={p._id.$oid} onClick={() => handleSelectProduct(p)}>
+                                    {p.title} ({p.calories} kcal/100g)
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                
+
+                <input
+                    type="number"
+                    placeholder="Grams"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    className={styles.inputField}
+                />
+                
+                <button type="submit" className={styles.submitButton}>+</button>
+</div>
+            </form>
         </div>
     );
 };

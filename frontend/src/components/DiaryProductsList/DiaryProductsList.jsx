@@ -1,31 +1,37 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { removeConsumedCalories } from "../../redux/caloriesSlice";
 import styles from "./DiaryProductsList.module.css";
 
-const DiaryProductsList = ({ consumedFoods }) => {
-    const dispatch = useDispatch();
-
-    const handleDeleteFood = (index) => {
-        const removedFood = consumedFoods[index];
-        dispatch(removeConsumedCalories(removedFood.calories));
-    };
-
+const DiaryProductsList = ({ consumedFoods = [], onDeleteFood }) => {
     return (
-        <div className={styles.productList}>
-            <h3>Consumed Products</h3>
-            <ul>
-                {consumedFoods.length > 0 ? (
-                    consumedFoods.map((food, index) => (
+        <div className={styles.productsListContainer}>
+            {consumedFoods.length === 0 ? (
+                <p>No products added yet.</p>
+            ) : (
+                <ul className={styles.productsList}>
+                    {consumedFoods.map((food, index) => (
                         <li key={index}>
-                            {food.product} - {food.weight}g - {food.calories} kcal
-                            <button onClick={() => handleDeleteFood(index)}>X</button>
+                            {/* ✅ Aliment (stânga) */}
+                            <span className={styles.productName}>{food.name}</span>
+
+                            {/* ✅ Cantitate (dreapta) */}
+                            <span className={styles.productWeight}>{food.weight}g</span>
+
+                            {/* ✅ Calorii (dreapta) */}
+                            <span className={styles.productCalories}>
+                                {food.calories.toFixed(2)} kcal
+                            </span>
+
+                            {/* ✅ Butonul de ștergere (X) */}
+                            <button 
+                                className={styles.deleteButton} 
+                                onClick={() => onDeleteFood(index)} // ✅ Acum funcția este definită corect
+                            >
+                                ✕
+                            </button>
                         </li>
-                    ))
-                ) : (
-                    <li>No products added.</li>
-                )}
-            </ul>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
