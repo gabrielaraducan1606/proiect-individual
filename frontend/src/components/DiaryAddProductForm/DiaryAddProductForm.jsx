@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import productsData from "../../data/products.json"; // ✅ Importăm lista de produse
+import { useDispatch } from "react-redux";
+import { addConsumedFood } from "../../redux/caloriesSlice";
+import productsData from "../../data/products.json";
 import styles from "./DiaryAddProductForm.module.css";
 
-const DiaryAddProductForm = ({ selectedDate, onAddFood }) => {
+const DiaryAddProductForm = ({ selectedDate }) => {
+    const dispatch = useDispatch();
     const [product, setProduct] = useState("");
     const [weight, setWeight] = useState("");
     const [calories, setCalories] = useState(0);
     const [filteredProducts, setFilteredProducts] = useState([]);
 
     useEffect(() => {
-        // ✅ Filtrăm produsele pe baza textului introdus
         if (product.length > 0) {
             const filtered = productsData.filter((p) =>
                 p.title.toLowerCase().includes(product.toLowerCase())
@@ -23,16 +25,30 @@ const DiaryAddProductForm = ({ selectedDate, onAddFood }) => {
     const handleSelectProduct = (selectedProduct) => {
         setProduct(selectedProduct.title);
         setCalories(selectedProduct.calories);
-        setFilteredProducts([]); // ✅ Ascundem sugestiile după selectare
+        setFilteredProducts([]);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!product || !weight) return;
 
-        const totalCalories = (weight / 100) * calories; // ✅ Calculăm caloriile corect
+        const totalCalories = (weight / 100) * calories;
 
-        onAddFood({ name: product, weight, calories: totalCalories });
+        // ✅ Ensure selectedDate is always a string
+        const formattedDate =
+            selectedDate instanceof Date
+                ? selectedDate.toISOString().split("T")[0]
+                : new Date(selectedDate).toISOString().split("T")[0];
+
+        dispatch(
+            addConsumedFood({
+                date: formattedDate, // ✅ Save with formatted date
+                name: product,
+                weight: Number(weight),
+                calories: totalCalories,
+            })
+        );
+
         setProduct("");
         setWeight("");
         setCalories(0);
@@ -49,7 +65,6 @@ const DiaryAddProductForm = ({ selectedDate, onAddFood }) => {
                         onChange={(e) => setProduct(e.target.value)}
                         className={styles.inputField}
                     />
-                    {/* ✅ Lista de sugestii */}
                     {filteredProducts.length > 0 && (
                         <ul className={styles.suggestions}>
                             {filteredProducts.slice(0, 5).map((p) => (
@@ -59,18 +74,15 @@ const DiaryAddProductForm = ({ selectedDate, onAddFood }) => {
                             ))}
                         </ul>
                     )}
-                
-
-                <input
-                    type="number"
-                    placeholder="Grams"
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className={styles.inputField}
-                />
-                
-                <button type="submit" className={styles.submitButton}>+</button>
-</div>
+                    <input
+                        type="number"
+                        placeholder="Grams"
+                        value={weight}
+                        onChange={(e) => setWeight(e.target.value)}
+                        className={styles.inputField}
+                    />
+                    <button type="submit" className={styles.submitButton}>+</button>
+                </div>
             </form>
         </div>
     );

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./DiaryDateCalendar.module.css";
-import CalendarIcon from "../../assets/calendar 1.svg";
+import CalendarIcon from "../../assets/calendar 1.svg"; // ✅ Import SVG
 
 const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
-    if (!selectedDate) return null; // ✅ Prevents error if undefined
+    const dateObject = selectedDate instanceof Date ? selectedDate : new Date(selectedDate);
 
-    const formattedDate = selectedDate.toLocaleDateString("ro-RO", {
+    const formattedDate = dateObject.toLocaleDateString("ro-RO", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
@@ -17,7 +17,7 @@ const DiaryDateCalendar = ({ selectedDate, setSelectedDate }) => {
                 <input
                     type="date"
                     id="dateInput"
-                    value={selectedDate.toISOString().split("T")[0]}
+                    value={dateObject.toISOString().split("T")[0]}
                     onChange={(e) => setSelectedDate(new Date(e.target.value))}
                     className={styles.hiddenDateInput}
                 />

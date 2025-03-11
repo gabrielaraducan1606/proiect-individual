@@ -1,7 +1,19 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeConsumedFood } from "../../redux/caloriesSlice";
 import styles from "./DiaryProductsList.module.css";
 
-const DiaryProductsList = ({ consumedFoods = [], onDeleteFood }) => {
+const DiaryProductsList = ({ selectedDate }) => {
+    const dispatch = useDispatch();
+
+    // ✅ Ensure selectedDate is a string
+    const formattedDate =
+        selectedDate instanceof Date
+            ? selectedDate.toISOString().split("T")[0]
+            : new Date(selectedDate).toISOString().split("T")[0];
+
+    const consumedFoods = useSelector((state) => state.calories.consumedFoods[formattedDate] || []);
+
     return (
         <div className={styles.productsListContainer}>
             {consumedFoods.length === 0 ? (
@@ -10,21 +22,12 @@ const DiaryProductsList = ({ consumedFoods = [], onDeleteFood }) => {
                 <ul className={styles.productsList}>
                     {consumedFoods.map((food, index) => (
                         <li key={index}>
-                            {/* ✅ Aliment (stânga) */}
                             <span className={styles.productName}>{food.name}</span>
-
-                            {/* ✅ Cantitate (dreapta) */}
                             <span className={styles.productWeight}>{food.weight}g</span>
-
-                            {/* ✅ Calorii (dreapta) */}
-                            <span className={styles.productCalories}>
-                                {food.calories.toFixed(2)} kcal
-                            </span>
-
-                            {/* ✅ Butonul de ștergere (X) */}
+                            <span className={styles.productCalories}>{food.calories.toFixed(2)} kcal</span>
                             <button 
                                 className={styles.deleteButton} 
-                                onClick={() => onDeleteFood(index)} // ✅ Acum funcția este definită corect
+                                onClick={() => dispatch(removeConsumedFood({ date: formattedDate, index }))}
                             >
                                 ✕
                             </button>
