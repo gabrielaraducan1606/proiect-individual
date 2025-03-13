@@ -6,12 +6,58 @@
     width: 517px; /* ✅ Lățimea containerului */
     height: 100vh; /* ✅ Înălțimea pe toată pagina */
     background: #F0F1F3;
-    padding: 20px;
-    box-shadow: -3px 0px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* ✅ Container pentru butoane */
+.summaryHeader {
+    position: absolute;
+    top: 85px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ✅ Buton „Nic” */
+.navButton {
+    font-family: Verdana;
+font-weight: 700;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+text-align: right;
+    color: #212121;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+
+/* ✅ Buton Logout */
+.logoutButton {
+    font-family: Verdana;
+font-weight: 700;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+text-align: right;
+    color: #9B9FAA;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+
+/* ✅ Bara Verticală între butoane */
+.verticalBar {
+    height: 24px;
+    width: 2px;
+    background-color: #E0E0E0;
+    border-width: 2px;
 }
 
 /* ✅ Titlul "Summary for today" */
@@ -23,10 +69,11 @@
     letter-spacing: 4%;
     color: #212121;
     text-align: left;
+    margin-top: 60px; /* Ajustare pentru a nu fi acoperit de butoane */
     margin-bottom: 20px;
+    margin-left: -100px;
 }
 
-/* ✅ Listă pentru informații */
 /* ✅ Listă pentru informații */
 .summaryList {
     list-style: none;
@@ -38,10 +85,10 @@
 /* ✅ Fiecare element din listă */
 .summaryList li {
     font-family: Verdana;
-font-weight: 400;
-font-size: 14px;
-line-height: 100%;
-letter-spacing: 4%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
     color: #9B9FAA;
     padding: 10px 0;
     display: flex;  /* ✅ Folosim Flexbox */
@@ -51,6 +98,54 @@ letter-spacing: 4%;
 
 /* ✅ Stil pentru eticheta (Left, Consumed, etc.) */
 .summaryList li span {
-    font-weight: bold;
     color: #9B9FAA;
+}
+
+/* ✅ Container pentru alimente nerecomandate */
+.forbiddenFoodsContainer {
+    margin-top: 20px;
+    padding: 15px;
+    margin-left: 94px;
+}
+
+.forbiddenFoodsContainer ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.forbiddenFoodsContainer ::-webkit-scrollbar-thumb {
+    background-color: #264061;
+    border-radius: 4px;
+}
+
+.title2{
+    font-family: Verdana;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 4%;
+    color: #212121;    
+}
+
+.forbiddenList {
+    max-height: 100px; /* Înălțime fixă pentru scroll */
+    overflow-y: auto;  /* Activează scroll-ul vertical */
+    padding: 0px;
+    margin-top: 30px;
+    border-radius: 5px;
+    color: #9B9FAA;
+    font-family: Verdana;
+font-weight: 400;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 4%;
+}
+
+.forbiddenList li {
+    padding: 8px;
+    font-size: 14px;
+    list-style: none;
+}
+
+.forbiddenList li:last-child {
+    border-bottom: none;
 }

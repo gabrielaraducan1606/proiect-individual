@@ -1,72 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    dailyCalories: 0,
-    consumedCalories: 0,
-    consumedFoods: {}, // ✅ Store foods per date { "2024-03-13": [{ food item }] }
-};
+    dailyCaloriesByDate: {},
+    consumedFoods: {},
+    selectedDate: new Date().toISOString().split("T")[0],
+    forbiddenFoods: [], // ✅ Asigură-te că este inițializat corect
+}
 
 const caloriesSlice = createSlice({
     name: "calories",
     initialState,
     reducers: {
-        // ✅ Set daily calorie goal
         setDailyCalories: (state, action) => {
-            state.dailyCalories = action.payload;
+            const { date, calories } = action.payload;
+            state.dailyCaloriesByDate[date] = calories;
         },
-
-        // ✅ Add consumed food correctly
+        setSelectedDate: (state, action) => {
+            const newDate = new Date(action.payload);
+            if (!isNaN(newDate.getTime())) {
+                state.selectedDate = newDate.toISOString().split("T")[0];
+            }
+        },
         addConsumedFood: (state, action) => {
             const { date, name, weight, calories } = action.payload;
-
-            // ✅ Use structured cloning to avoid direct mutation
-            const updatedConsumedFoods = { ...state.consumedFoods };
-
-            if (!updatedConsumedFoods[date]) {
-                updatedConsumedFoods[date] = [];
+            if (!state.consumedFoods[date]) {
+                state.consumedFoods[date] = [];
             }
-
-            updatedConsumedFoods[date] = [
-                ...updatedConsumedFoods[date],
-                { name, weight, calories }
-            ];
-
-            return {
-                ...state,
-                consumedFoods: updatedConsumedFoods,
-                consumedCalories: Object.values(updatedConsumedFoods)
-                    .flat()
-                    .reduce((total, food) => total + food.calories, 0),
-            };
+            state.consumedFoods[date].push({ name, weight, calories });
         },
-
-        // ✅ Remove consumed food
         removeConsumedFood: (state, action) => {
             const { date, index } = action.payload;
-
             if (state.consumedFoods[date]) {
-                const updatedFoods = [...state.consumedFoods[date]];
-                updatedFoods.splice(index, 1); // Remove selected item
-
-                // ✅ Create a new object to avoid direct state mutation
-                const updatedConsumedFoods = { ...state.consumedFoods };
-                if (updatedFoods.length > 0) {
-                    updatedConsumedFoods[date] = updatedFoods;
-                } else {
-                    delete updatedConsumedFoods[date]; // Remove date if empty
+                state.consumedFoods[date].splice(index, 1);
+                if (state.consumedFoods[date].length === 0) {
+                    delete state.consumedFoods[date];
                 }
-
-                return {
-                    ...state,
-                    consumedFoods: updatedConsumedFoods,
-                    consumedCalories: Object.values(updatedConsumedFoods)
-                        .flat()
-                        .reduce((total, food) => total + food.calories, 0),
-                };
             }
+        },
+        setForbiddenFoods: (state, action) => {
+            state.forbiddenFoods = action.payload; // ✅ Setează lista produselor nerecomandate
         },
     },
 });
 
-export const { setDailyCalories, addConsumedFood, removeConsumedFood } = caloriesSlice.actions;
+export const { setDailyCalories, setSelectedDate, addConsumedFood, removeConsumedFood, setForbiddenFoods } = caloriesSlice.actions;
 export default caloriesSlice.reducer;

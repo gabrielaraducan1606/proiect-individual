@@ -87,12 +87,3 @@
     color: #9B9FAA;
 }
 
-/* ✅ Conținutul paginii */
-.authContent {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-}
